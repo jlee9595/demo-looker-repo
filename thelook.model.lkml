@@ -160,10 +160,7 @@ explore: affinity {
   label: "(4) Affinity Analysis"
 
   always_filter: {
-    filters: {
-      field: affinity.product_b_id
-      value: "-NULL"
-    }
+    filters: [affinity.product_b_id: "-NULL"]
   }
 
   join: product_a {

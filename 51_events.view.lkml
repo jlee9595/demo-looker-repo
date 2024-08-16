@@ -52,10 +52,7 @@ view: events {
     type: count
     description: "Count of events where those events were the bounce page for the session"
 
-    filters: {
-      field: is_exit_event
-      value: "Yes"
-    }
+    filters: [is_exit_event: "Yes"]
   }
 
   measure: bounce_rate {

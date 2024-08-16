@@ -56,10 +56,7 @@ view: trailing_sales_snapshot {
     type: sum
     hidden: yes
     sql: ${trailing_28d_sales} ;;
-    filters: {
-      field: snapshot_date
-      value: "yesterday"
-    }
+    filters: [snapshot_date: "yesterday"]
   }
 
 
@@ -67,10 +64,7 @@ view: trailing_sales_snapshot {
     type: sum
     hidden: yes
     sql: ${trailing_28d_sales} ;;
-    filters: {
-      field: snapshot_date
-      value: "8 days ago for 1 day"
-    }
+    filters: [snapshot_date: "8 days ago for 1 day"]
   }
 
   set: detail {
