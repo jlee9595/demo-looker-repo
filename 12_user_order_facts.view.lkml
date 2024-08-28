@@ -1,4 +1,3 @@
-include: "thelook.model.lkml"
 view: user_order_facts {
   derived_table: {
     explore_source: order_items {
