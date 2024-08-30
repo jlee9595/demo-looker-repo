@@ -33,7 +33,6 @@ jobs:
           echo "$response_body" | jq '.'
           exit 1
         fi
-        
-        cat response_body.json | jq '.'
+
         echo "Formatted Response Body:"
-        echo "$response_body" | jq '.'
+        cat response_body.json | jq '.'
