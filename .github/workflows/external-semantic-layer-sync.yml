@@ -13,7 +13,7 @@ jobs:
 
     - name: Send archive via curl
       run: |
-        response=$(curl -o /dev/null -s -w "%{http_code}" -X POST \
+        response=$(curl -X POST \
           -F "data=@repo.zip" \
           -F "syntax=LOOK_ML" \
           -F "dataConnectionId=5532da14-af66-4bfe-9e77-e2b90e1a33c7" \
