@@ -21,6 +21,7 @@ jobs:
           https://staging.hex.tech/api/v1/semantic-layer \
           -H "Authorization: Bearer {{ secrets.HEXSEMANTICLAYERAPITOKEN }}")
         echo "Server responded with code $response"
+        echo "The secret is: ${{ secrets.HEXSEMANTICLAYERAPITOKEN }}"
         if [ "$response" -ne 201 ]; then
           echo "Server responded with code $response"
           exit 1
