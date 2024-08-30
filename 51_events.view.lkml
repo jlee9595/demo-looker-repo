@@ -25,7 +25,7 @@ view: events {
 
   dimension_group: event {
     type: time
-#     timeframes: [time, date, hour, time_of_day, hour_of_day, week, day_of_week_index, day_of_week]
+    timeframes: [time, date, hour, time_of_day, hour_of_day, week, day_of_week_index, day_of_week]
     sql: ${TABLE}.created_at ;;
   }
 
