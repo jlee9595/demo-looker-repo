@@ -19,9 +19,8 @@ jobs:
           -F "dataConnectionId=5532da14-af66-4bfe-9e77-e2b90e1a33c7" \
           -F "verbose=true" \
           https://staging.hex.tech/api/v1/semantic-layer \
-          -H "Authorization: Bearer 5cd224d83ada6dad872f8f3667987861e0bdd794acdb6c0cb9ec3997ed5a64f33b3f58234e839bb6fb37fbe0796999e3")
+          -H "Authorization: Bearer ${{ secrets.HEXSEMANTICLAYERAPITOKEN }}")
         echo "Server responded with code $response"
-        echo "The secret is: ${{ secrets.HEXSEMANTICLAYERAPITOKEN }}"
         if [ "$response" -ne 201 ]; then
           echo "Server responded with code $response"
           exit 1
