@@ -11,16 +11,23 @@ jobs:
     - name: Archive repository
       run: git archive -o repo.zip HEAD
 
+    - name: Install jq
+      run: sudo apt-get install -y jq
+
     - name: Send archive via curl
       run: |
-        response=$(curl -X POST \
+        response=$(curl -s -X POST \
           -F "data=@repo.zip" \
           -F "syntax=LOOK_ML" \
           -F "dataConnectionId=5532da14-af66-4bfe-9e77-e2b90e1a33c7" \
           -F "verbose=true" \
           https://staging.hex.tech/api/v1/semantic-layer \
           -H "Authorization: Bearer ${{ secrets.HEXSEMANTICLAYERAPITOKEN }}")
-        echo "Server responded with code $response"
+        echo "Raw Response:"
+        echo "$response"
+        
+        echo "Formatted Response:"
+        echo "$response" | jq '.'
         if [ "$response" -ne 201 ]; then
           echo "Server responded with code $response"
           exit 1
