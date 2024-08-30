@@ -34,6 +34,6 @@ jobs:
           exit 1
         fi
         
-        echo "$response_body"
+        echo "$response"
         echo "Formatted Response Body:"
         echo "$response_body" | jq '.'
