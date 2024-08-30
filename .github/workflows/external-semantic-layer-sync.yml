@@ -16,7 +16,7 @@ jobs:
 
     - name: Send archive via curl
       run: |
-        response=$(curl -s -X POST \
+        response=$(curl -s -w "%{http_code}" -o response_body.json -X POST \
           -F "data=@repo.zip" \
           -F "syntax=LOOK_ML" \
           -F "dataConnectionId=5532da14-af66-4bfe-9e77-e2b90e1a33c7" \
@@ -24,9 +24,15 @@ jobs:
           https://staging.hex.tech/api/v1/semantic-layer \
           -H "Authorization: Bearer ${{ secrets.HEXSEMANTICLAYERAPITOKEN }}")
         
-        echo "Formatted Response:"
-        echo "$response" | jq '.'
-        if [ "$response" -ne 201 ]; then
-          echo "Server responded with code $response"
+        status_code="${response: -3}"
+        response_body="${response::-3}"
+
+        if [ "$status_code" -ne 200 ]; then
+          echo "Error: Received status code $status_code"
+          echo "Response Body:"
+          echo "$response_body" | jq '.'
           exit 1
         fi
+        
+        echo "Formatted Response Body:"
+        echo "$response_body" | jq '.'
