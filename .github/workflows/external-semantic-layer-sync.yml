@@ -23,8 +23,6 @@ jobs:
           -F "verbose=true" \
           https://staging.hex.tech/api/v1/semantic-layer \
           -H "Authorization: Bearer ${{ secrets.HEXSEMANTICLAYERAPITOKEN }}")
-        echo "Raw Response:"
-        echo "$response"
         
         echo "Formatted Response:"
         echo "$response" | jq '.'
