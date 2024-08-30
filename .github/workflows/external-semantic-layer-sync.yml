@@ -20,6 +20,7 @@ jobs:
           -F "verbose=true" \
           https://staging.hex.tech/api/v1/semantic-layer \
           -H "Authorization: Bearer {{ secrets.HexSemanticLayerApiToken }}")
+        echo "Server responded with code $response"
         if [ "$response" -ne 201 ]; then
           echo "Server responded with code $response"
           exit 1
