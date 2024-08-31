@@ -34,5 +34,5 @@ jobs:
           exit 1
         fi
 
-        echo "Formatted Response Body:"
+        echo "Successfully uploaded semantic layer. See below for skipped entities due to currently unsupported features"
         cat response_body.json | jq '.'
